@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snacks Hut - Delicious Food Delivered</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>SNACKS HUT</h1>
+                    <span>(NEW TOWN)</span>
+                </div>
+                <button class="cart-btn" onclick="openCart()">
+                    🛒 Cart (<span id="cart-count">0</span>)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Delicious Food, Delivered Fresh</h2>
+                <p>Experience the best Chinese, Indian, and fusion cuisine in New Town</p>
+                <button class="cta-btn" onclick="scrollToMenu()">Order Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            
+            <div class="menu-categories">
+                <button class="category-btn active" onclick="filterMenu('all')">All Items</button>
+                <button class="category-btn" onclick="filterMenu('chinese')">Chinese</button>
+                <button class="category-btn" onclick="filterMenu('fried-rice')">Fried Rice</button>
+                <button class="category-btn" onclick="filterMenu('indian')">Indian</button>
+                <button class="category-btn" onclick="filterMenu('south-indian')">South Indian</button>
+                <button class="category-btn" onclick="filterMenu('snacks')">Snacks</button>
+            </div>
+
+            <div class="menu-grid" id="menu-grid">
+                <!-- Menu items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2>Your Order</h2>
+            <div id="cart-items"></div>
+            <div class="cart-total" id="cart-total">Total: ₹0</div>
+            <button class="checkout-btn" onclick="proceedToPayment()">Proceed to Payment</button>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePayment()">&times;</span>
+            <div class="payment-section">
+                <h2>Payment</h2>
+                <div class="payment-info">
+                    <h3>Order Total: <span id="payment-total">₹0</span></h3>
+                    <p>Scan the QR code below to pay</p>
+                </div>
+                <div class="qr-code">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=snackshut@paytm&pn=Snacks%20Hut&am=100&cu=INR" alt="Payment QR Code" id="payment-qr">
+                </div>
+                <div class="payment-info">
+                    <p><strong>Pay to:</strong> Snacks Hut</p>
+                    <p><strong>UPI ID:</strong> snackshut@paytm</p>
+                    <p>After payment, your order will be confirmed!</p>
+                </div>
+                <button class="checkout-btn" onclick="confirmOrder()">I've Made the Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
